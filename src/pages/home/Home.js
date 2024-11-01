@@ -11,12 +11,13 @@ const MainBanner = styled.section`
   padding: 0 ${mainStyle.moPadding};
   position: relative;
   color: #fff;
-  @media screen and (min-width: 450px){
+  @media screen and (min-width: 450px) {
     padding: 0 ${mainStyle.pcPadding};
   }
 `;
 
 const TitleWrap = styled.div`
+  width: 100%;
   position: absolute;
   bottom: 150px;
   left: 0;
@@ -32,6 +33,20 @@ const TitleWrap = styled.div`
     line-height: 20px;
     opacity: 0.7;
   }
+
+  @media screen and (min-width: 450px) {
+    padding: 0 ${mainStyle.pcPadding};
+    width: 60%;
+
+    h3 {
+      font-size: 50px;
+    }
+
+    p {
+      font-size: 18px;
+      line-height: 30px;
+    }
+  }
 `;
 
 const Home = () => {
@@ -39,6 +54,7 @@ const Home = () => {
   const [popData, setPopData] = useState();
   const [topData, setTopData] = useState();
   const [upData, setUpData] = useState();
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     (async () => {
@@ -52,6 +68,7 @@ const Home = () => {
         setPopData(pop);
         setTopData(top);
         setUpData(up);
+        setIsLoading(false);
       } catch (error) {
         console.log(error);
       }
@@ -65,12 +82,16 @@ const Home = () => {
 
   return (
     <div>
-      <MainBanner $coverImg={nowData[0]?.backdrop_path}>
-        <TitleWrap>
-          <h3>{nowData[0]?.title}</h3>
-          <p>{nowData[0]?.overview.slice(0, 100) + "..."}</p>
-        </TitleWrap>
-      </MainBanner>
+      {isLoading ? (
+        "loading..."
+      ) : (
+        <MainBanner $coverImg={nowData[0]?.backdrop_path}>
+          <TitleWrap>
+            <h3>{nowData[0]?.title}</h3>
+            <p>{nowData[0]?.overview.slice(0, 100) + "..."}</p>
+          </TitleWrap>
+        </MainBanner>
+      )}
     </div>
   );
 };
