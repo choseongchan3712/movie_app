@@ -24,6 +24,7 @@ export const popular = () =>
 
 export const topRated = () =>
   fetch(url("movie/top_rated"), options).then((res) => res.json());
+
 export const upComing = () =>
   fetch(url("movie/upcoming"), options).then((res) => res.json());
 
