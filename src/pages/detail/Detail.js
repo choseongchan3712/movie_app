@@ -5,7 +5,6 @@ import styled from "styled-components";
 import { mainStyle } from "../../GlobalStyled";
 import { ORIGINAL_URL } from "../../constant/imgUrl";
 import Loading from "../../components/Loading";
-import { Helmet } from "react-helmet-async";
 import PageTitle from "../../components/PageTitle";
 
 const Container = styled.div`

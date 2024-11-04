@@ -4,7 +4,6 @@ import Loading from "../../components/Loading";
 import "swiper/css";
 import Banner from "./components/Banner";
 import Contents from "./components/Contents";
-import { Helmet } from "react-helmet-async";
 import PageTitle from "../../components/PageTitle";
 
 const Home = () => {
