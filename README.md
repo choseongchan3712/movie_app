@@ -5,8 +5,8 @@
 - [x] api 설정
 - [x] Loading, Header, Footer 글로벌 콤포넌트 구성
 - [x] 웹 폰트 설정
-- [] 각 페이지 UI 작업 및 반응형
-- [] Helmet
+- [x] 각 페이지 UI 작업 및 반응형
+- [x] Helmet
 - [] Header Scroll Event
 - [] Deploy
 
@@ -20,5 +20,5 @@
 - [] swiper
 - [] font-awesome
 - [] npm i react-hook-form
-- [] helmet-async
+- [x] helmet-async
 - [] react icons

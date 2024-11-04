@@ -4,6 +4,8 @@ import Loading from "../../components/Loading";
 import "swiper/css";
 import Banner from "./components/Banner";
 import Contents from "./components/Contents";
+import { Helmet } from "react-helmet-async";
+import PageTitle from "../../components/PageTitle";
 
 const Home = () => {
   const [nowData, setNowData] = useState();
@@ -13,7 +15,7 @@ const Home = () => {
   const [isLoading, setIsLoading] = useState(true);
   const randomDataArr = [nowData, popData, topData, upData];
   const [random, setRandom] = useState();
-  const num = Math.floor((Math.random() * 3) + 1);
+  const num = Math.floor(Math.random() * 3 + 1);
 
   useEffect(() => {
     (async () => {
@@ -22,7 +24,7 @@ const Home = () => {
         const { results: pop } = await popular();
         const { results: top } = await topRated();
         const { results: up } = await upComing();
-        
+
         setNowData(now);
         setPopData(pop);
         setTopData(top);
@@ -48,7 +50,10 @@ const Home = () => {
         <Loading />
       ) : (
         <>
-          {nowData && popData && topData && upData && <Banner data={randomDataArr[random]} />}
+          <PageTitle title={"Home"} />
+          {nowData && popData && topData && upData && (
+            <Banner data={randomDataArr[random]} />
+          )}
           {nowData && <Contents data={nowData} title="현재 상영중" />}
           {popData && (
             <div>

@@ -5,6 +5,8 @@ import styled from "styled-components";
 import { mainStyle } from "../../GlobalStyled";
 import { ORIGINAL_URL } from "../../constant/imgUrl";
 import Loading from "../../components/Loading";
+import { Helmet } from "react-helmet-async";
+import PageTitle from "../../components/PageTitle";
 
 const Container = styled.div`
   padding: 150px ${mainStyle.pcPadding};
@@ -15,7 +17,8 @@ const Container = styled.div`
 const Bg = styled.div`
   width: 45%;
   height: 800px;
-  /* background: url(${ORIGINAL_URL}${(props) => props.$coverImg}) no-repeat center /
+  /* background: url(${ORIGINAL_URL}${(props) =>
+    props.$coverImg}) no-repeat center /
     cover; */
 `;
 const TitleWrap = styled.div`
@@ -73,26 +76,29 @@ const Detail = () => {
       {isLoading ? (
         <Loading />
       ) : (
-        <Container>
-          {/* <Bg $coverImg={detail.poster_path} /> */}
-          <Bg
-            style={{
-              background: `url(${ORIGINAL_URL}${detail.poster_path}) no-repeat center / cover `,
-            }}
-          />
-          <TitleWrap>
-            <h3>{detail?.title}</h3>
-            <span>{Math.round(detail?.vote_average)}점</span> •{" "}
-            <span>{detail?.runtime}분</span> •{" "}
-            <span>{detail?.release_date}</span>
-            <ul>
-              {detail?.genres?.map((data, index) => (
-                <li key={index}>{data.name}</li>
-              ))}
-            </ul>
-            <p>{detail?.overview}</p>
-          </TitleWrap>
-        </Container>
+        <>
+          <PageTitle title={detail?.title} />
+          <Container>
+            {/* <Bg $coverImg={detail.poster_path} /> */}
+            <Bg
+              style={{
+                background: `url(${ORIGINAL_URL}${detail.poster_path}) no-repeat center / cover `,
+              }}
+            />
+            <TitleWrap>
+              <h3>{detail?.title}</h3>
+              <span>{Math.round(detail?.vote_average)}점</span> •{" "}
+              <span>{detail?.runtime}분</span> •{" "}
+              <span>{detail?.release_date}</span>
+              <ul>
+                {detail?.genres?.map((data, index) => (
+                  <li key={index}>{data.name}</li>
+                ))}
+              </ul>
+              <p>{detail?.overview}</p>
+            </TitleWrap>
+          </Container>
+        </>
       )}
     </>
   );
