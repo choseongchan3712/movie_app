@@ -39,8 +39,7 @@ const params = {
   },
 };
 
-
-const Contents = ({data, title}) => {
+const Contents = ({ data, title }) => {
   return (
     <Container>
       <Title>{title}</Title>

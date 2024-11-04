@@ -35,7 +35,7 @@ const Home = () => {
     })();
   }, []);
 
-  console.log(random);
+  // console.log(random);
 
   // console.log(nowData);
   // console.log(popData);
@@ -52,17 +52,17 @@ const Home = () => {
           {nowData && <Contents data={nowData} title="현재 상영중" />}
           {popData && (
             <div>
-              <Contents data={popData} title="현재 인기작품" />
+              <Contents data={popData} title="인기영화" />
             </div>
           )}
           {topData && (
             <div>
-              <Contents data={topData} title="역대 인기작품" />
+              <Contents data={topData} title="영화 랭킹" />
             </div>
           )}
           {upData && (
             <div>
-              <Contents data={upData} title="신작" />
+              <Contents data={upData} title="개봉 예정" />
             </div>
           )}
         </>

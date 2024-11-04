@@ -63,7 +63,7 @@ const Banner = ({ data }) => {
     }
   }, []);
 
-  console.log(random);
+  // console.log(random);
 
   return (
     <>

@@ -10,7 +10,7 @@ align-items: center;
 
 const Loading = () => {
   return <Container>
-    <PacmanLoader color="crimson" />;
+    <PacmanLoader color="crimson" />
 
   </Container>
 };

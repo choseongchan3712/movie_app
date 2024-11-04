@@ -28,6 +28,9 @@ export const topRated = () =>
 export const upComing = () =>
   fetch(url("movie/upcoming"), options).then((res) => res.json());
 
+export const movieDetail = (id) =>
+  fetch(url(`movie/${id}`), options).then((res) => res.json());
+
 //! 동기화
 
 //! 비동기화(Promise)
