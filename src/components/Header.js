@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { mainStyle } from "../GlobalStyled";
+import { useEffect, useRef } from "react";
 
 const Container = styled.header`
   padding: 20px ${mainStyle.pcPadding};
@@ -39,8 +40,30 @@ const Menu = styled.ul`
 `;
 
 const Header = () => {
+  const headerRef = useRef();
+
+  const scrollHandler = () => {
+    const pageY = window.scrollY;
+    const current = headerRef.current;
+    console.log(pageY);
+
+    if (pageY >= 400) {
+      current.style.position = "fixed";
+      current.style.backgroundColor = "rgba(0,0,0,0.5)";
+      current.style.backdropFilter = "blur(10px)";
+    } else if (pageY < 400) {
+      current.style.position = "absolute";
+      current.style.backgroundColor = "rgba(0,0,0,0)";
+      current.style.backdropFilter = "blur(0)";
+    }
+  };
+
+  useEffect(()=>{
+    return window.addEventListener("scroll", scrollHandler);
+  })
+
   return (
-    <Container>
+    <Container ref={headerRef}>
       <Logo>
         <Link to={"/"}>PNFLIEX</Link>
       </Logo>

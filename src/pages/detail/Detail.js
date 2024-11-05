@@ -2,13 +2,13 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { movieDetail } from "../../api";
 import styled from "styled-components";
-import { mainStyle } from "../../GlobalStyled";
 import { ORIGINAL_URL } from "../../constant/imgUrl";
 import Loading from "../../components/Loading";
 import PageTitle from "../../components/PageTitle";
+import Wrapper from "../../components/Wrapper";
+import useScrollTop from "../../lib/useScrollTop";
 
 const Container = styled.div`
-  padding: 150px ${mainStyle.pcPadding};
   display: flex;
   justify-content: space-between;
 `;
@@ -55,6 +55,7 @@ const Detail = () => {
 
   const [detail, setdetail] = useState();
   const [isLoading, setIsLoading] = useState(true);
+  useScrollTop();
 
   useEffect(() => {
     (async () => {
@@ -68,7 +69,7 @@ const Detail = () => {
     })();
   }, [id]);
 
-  console.log(detail);
+  // console.log(detail);
 
   return (
     <>
@@ -77,26 +78,28 @@ const Detail = () => {
       ) : (
         <>
           <PageTitle title={detail?.title} />
-          <Container>
-            {/* <Bg $coverImg={detail.poster_path} /> */}
-            <Bg
-              style={{
-                background: `url(${ORIGINAL_URL}${detail.poster_path}) no-repeat center / cover `,
-              }}
-            />
-            <TitleWrap>
-              <h3>{detail?.title}</h3>
-              <span>{Math.round(detail?.vote_average)}점</span> •{" "}
-              <span>{detail?.runtime}분</span> •{" "}
-              <span>{detail?.release_date}</span>
-              <ul>
-                {detail?.genres?.map((data, index) => (
-                  <li key={index}>{data.name}</li>
-                ))}
-              </ul>
-              <p>{detail?.overview}</p>
-            </TitleWrap>
-          </Container>
+          <Wrapper>
+            <Container>
+              {/* <Bg $coverImg={detail.poster_path} /> */}
+              <Bg
+                style={{
+                  background: `url(${ORIGINAL_URL}${detail.poster_path}) no-repeat center / cover `,
+                }}
+              />
+              <TitleWrap>
+                <h3>{detail?.title}</h3>
+                <span>{Math.round(detail?.vote_average)}점</span> •{" "}
+                <span>{detail?.runtime}분</span> •{" "}
+                <span>{detail?.release_date}</span>
+                <ul>
+                  {detail?.genres?.map((data, index) => (
+                    <li key={index}>{data.name}</li>
+                  ))}
+                </ul>
+                <p>{detail?.overview}</p>
+              </TitleWrap>
+            </Container>
+          </Wrapper>
         </>
       )}
     </>

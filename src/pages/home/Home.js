@@ -5,6 +5,7 @@ import "swiper/css";
 import Banner from "./components/Banner";
 import Contents from "./components/Contents";
 import PageTitle from "../../components/PageTitle";
+import useScrollTop from "../../lib/useScrollTop";
 
 const Home = () => {
   const [nowData, setNowData] = useState();
@@ -15,6 +16,7 @@ const Home = () => {
   const randomDataArr = [nowData, popData, topData, upData];
   const [random, setRandom] = useState();
   const num = Math.floor(Math.random() * 3 + 1);
+  useScrollTop();
 
   useEffect(() => {
     (async () => {

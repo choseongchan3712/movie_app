@@ -31,6 +31,13 @@ export const upComing = () =>
 export const movieDetail = (id) =>
   fetch(url(`movie/${id}`), options).then((res) => res.json());
 
+export const searchMoovie = (keyword) => {
+  const searchUrl = baseUrl + `search/movie?query=${keyword}&include_adult=true&language=ko-kr`;
+  return fetch(searchUrl, options).then((res) => res.json());
+  // ! return 꼭 붙여야 함!!!!!!
+};
+  
+
 //! 동기화
 
 //! 비동기화(Promise)
