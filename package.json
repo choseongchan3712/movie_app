@@ -27,7 +27,7 @@
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build"
   },
-  "homepage": "https://choseongchan3712.github.io/MOVIE_APP/#/",
+  "homepage": "https://choseongchan3712.github.io/movie_app/#/",
   "eslintConfig": {
     "extends": [
       "react-app",
